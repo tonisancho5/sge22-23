@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_empires_of_legends_player,empires_of_legends.player,model_empires_of_legends_player,base.group_user,1,1,1,1
+access_empires_of_legends_territory,empires_of_legends.territory,model_empires_of_legends_territory,base.group_user,1,1,1,1
+access_empires_of_legends_village,empires_of_legends.village,model_empires_of_legends_village,base.group_user,1,1,1,1
