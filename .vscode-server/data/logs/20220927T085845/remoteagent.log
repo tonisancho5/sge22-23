@@ -1,0 +1,17 @@
+[2022-09-27 08:58:46.377] [remoteagent] [info] Extension host agent started.
+[2022-09-27 08:58:46.700] [remoteagent] [info] [127.0.0.1][2e57f9b1][ManagementConnection] New connection established.
+[2022-09-27 08:58:46.702] [remoteagent] [info] [127.0.0.1][5f5aa18f][ExtensionHostConnection] New connection established.
+[2022-09-27 08:58:46.715] [remoteagent] [info] [127.0.0.1][5f5aa18f][ExtensionHostConnection] <10769> Launched Extension Host Process.
+[2022-09-27 08:59:07.536] [remoteagent] [info] [127.0.0.1][2e57f9b1][ManagementConnection] The client has disconnected gracefully, so the connection will be disposed.
+[2022-09-27 08:59:07.552] [remoteagent] [info] [127.0.0.1][5f5aa18f][ExtensionHostConnection] <10769> Extension Host Process exited with code: 0, signal: null.
+[2022-09-27 08:59:07.552] [remoteagent] [info] Last EH closed, waiting before shutting down
+[2022-09-27 09:01:02.197] [remoteagent] [info] Got delay-shutdown request while in shutdown timeout, delaying
+[2022-09-27 09:01:02.197] [remoteagent] [info] Cancelling previous shutdown timeout
+[2022-09-27 09:01:02.359] [remoteagent] [info] [127.0.0.1][e6987546][ManagementConnection] New connection established.
+[2022-09-27 09:01:02.360] [remoteagent] [info] [127.0.0.1][3f539d67][ExtensionHostConnection] New connection established.
+[2022-09-27 09:01:02.366] [remoteagent] [info] [127.0.0.1][3f539d67][ExtensionHostConnection] <10927> Launched Extension Host Process.
+[2022-09-27 09:06:02.197] [remoteagent] [info] New EH opened, aborting shutdown
+[2022-09-27 09:22:24.556] [remoteagent] [info] [127.0.0.1][e6987546][ManagementConnection] The client has disconnected gracefully, so the connection will be disposed.
+[2022-09-27 09:22:24.569] [remoteagent] [info] [127.0.0.1][3f539d67][ExtensionHostConnection] <10927> Extension Host Process exited with code: 0, signal: null.
+[2022-09-27 09:22:24.569] [remoteagent] [info] Last EH closed, waiting before shutting down
+[2022-09-27 09:27:24.570] [remoteagent] [info] Last EH closed, shutting down

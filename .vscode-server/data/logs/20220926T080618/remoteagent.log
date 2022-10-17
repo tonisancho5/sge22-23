@@ -1,0 +1,19 @@
+[2022-09-26 08:06:18.341] [remoteagent] [info] Extension host agent started.
+[2022-09-26 08:06:20.102] [remoteagent] [info] [127.0.0.1][5f7e569b][ManagementConnection] New connection established.
+[2022-09-26 08:06:20.104] [remoteagent] [info] [127.0.0.1][ed713605][ExtensionHostConnection] New connection established.
+[2022-09-26 08:06:20.132] [remoteagent] [info] [127.0.0.1][ed713605][ExtensionHostConnection] <3331> Launched Extension Host Process.
+[2022-09-26 08:06:23.693] [remoteagent] [error] ["ErrorNoTelemetry: Could not find pty on pty host","    at d._throwIfNoPty (/var/lib/odoo/.vscode-server/bin/e4503b30fc78200f846c62cf8091b76ff5547662/out/vs/platform/terminal/node/ptyHostMain.js:24:29654)","    at d.updateTitle (/var/lib/odoo/.vscode-server/bin/e4503b30fc78200f846c62cf8091b76ff5547662/out/vs/platform/terminal/node/ptyHostMain.js:24:25430)","    at Object.call (/var/lib/odoo/.vscode-server/bin/e4503b30fc78200f846c62cf8091b76ff5547662/out/vs/platform/terminal/node/ptyHostMain.js:16:8327)","    at a.onPromise (/var/lib/odoo/.vscode-server/bin/e4503b30fc78200f846c62cf8091b76ff5547662/out/vs/platform/terminal/node/ptyHostMain.js:15:4892)","    at a.onRawMessage (/var/lib/odoo/.vscode-server/bin/e4503b30fc78200f846c62cf8091b76ff5547662/out/vs/platform/terminal/node/ptyHostMain.js:15:4275)","    at /var/lib/odoo/.vscode-server/bin/e4503b30fc78200f846c62cf8091b76ff5547662/out/vs/platform/terminal/node/ptyHostMain.js:15:3561","    at f.invoke (/var/lib/odoo/.vscode-server/bin/e4503b30fc78200f846c62cf8091b76ff5547662/out/vs/platform/terminal/node/ptyHostMain.js:11:145)","    at N.deliver (/var/lib/odoo/.vscode-server/bin/e4503b30fc78200f846c62cf8091b76ff5547662/out/vs/platform/terminal/node/ptyHostMain.js:11:2275)","    at I.fire (/var/lib/odoo/.vscode-server/bin/e4503b30fc78200f846c62cf8091b76ff5547662/out/vs/platform/terminal/node/ptyHostMain.js:11:1853)","    at process.Q (/var/lib/odoo/.vscode-server/bin/e4503b30fc78200f846c62cf8091b76ff5547662/out/vs/platform/terminal/node/ptyHostMain.js:9:20673)","    at process.emit (node:events:390:28)","    at emit (node:internal/child_process:917:12)","    at processTicksAndRejections (node:internal/process/task_queues:84:21)"]
+[2022-09-26 08:06:24.303] [remoteagent] [warning] No ptyHost heartbeat after 6 seconds
+[2022-09-26 08:06:26.204] [remoteagent] [info] [127.0.0.1][5f7e569b][ManagementConnection] The client has disconnected gracefully, so the connection will be disposed.
+[2022-09-26 08:06:26.219] [remoteagent] [info] [127.0.0.1][ed713605][ExtensionHostConnection] <3331> Extension Host Process exited with code: 0, signal: null.
+[2022-09-26 08:06:26.220] [remoteagent] [info] Last EH closed, waiting before shutting down
+[2022-09-26 08:07:53.717] [remoteagent] [info] Got delay-shutdown request while in shutdown timeout, delaying
+[2022-09-26 08:07:53.717] [remoteagent] [info] Cancelling previous shutdown timeout
+[2022-09-26 08:07:53.891] [remoteagent] [info] [127.0.0.1][4a0133ee][ManagementConnection] New connection established.
+[2022-09-26 08:07:53.892] [remoteagent] [info] [127.0.0.1][2d603341][ExtensionHostConnection] New connection established.
+[2022-09-26 08:07:53.898] [remoteagent] [info] [127.0.0.1][2d603341][ExtensionHostConnection] <3487> Launched Extension Host Process.
+[2022-09-26 08:11:06.313] [remoteagent] [info] [127.0.0.1][4a0133ee][ManagementConnection] The client has disconnected gracefully, so the connection will be disposed.
+[2022-09-26 08:11:06.337] [remoteagent] [info] [127.0.0.1][2d603341][ExtensionHostConnection] <3487> Extension Host Process exited with code: 0, signal: null.
+[2022-09-26 08:11:06.337] [remoteagent] [info] Cancelling previous shutdown timeout
+[2022-09-26 08:11:06.337] [remoteagent] [info] Last EH closed, waiting before shutting down
+[2022-09-26 08:16:06.338] [remoteagent] [info] Last EH closed, shutting down

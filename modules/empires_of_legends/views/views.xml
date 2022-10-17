@@ -1,25 +1,123 @@
 <odoo>
   <data>
-    <!-- explicit list view definition -->
-<!--
-    <record model="ir.ui.view" id="empires_of_legends.list">
-      <field name="name">empiresOfLegends list</field>
-      <field name="model">empires_of_legends.empires_of_legends</field>
+    <!-- vistes tree -->
+    
+    <record model="ir.ui.view" id="empires_of_legends.player_tree">
+      <field name="name">Empires Of Legends player list</field>
+      <field name="model">empires_of_legends.player</field>
       <field name="arch" type="xml">
         <tree>
           <field name="name"/>
-          <field name="value"/>
-          <field name="value2"/>
+          <field name="password"/>
+          <field name="villages"/>
         </tree>
       </field>
     </record>
--->
+
+    <record model="ir.ui.view" id="empires_of_legends.village_tree">
+      <field name="name">Empires Of Legends villages list</field>
+      <field name="model">empires_of_legends.village</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+        </tree>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="empires_of_legends.territory_tree">
+      <field name="name">Empires Of Legends territories list</field>
+      <field name="model">empires_of_legends.territory</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+        </tree>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="empires_of_legends.resource_site_tree">
+      <field name="name">Empires Of Legends resource sites list</field>
+      <field name="model">empires_of_legends.resource_site</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+        </tree>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="empires_of_legends.building_tree">
+      <field name="name">Empires Of Legends buildings list</field>
+      <field name="model">empires_of_legends.building</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+        </tree>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="empires_of_legends.building_type_tree">
+      <field name="name">Empires Of Legends building types list</field>
+      <field name="model">empires_of_legends.building_type</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+        </tree>
+      </field>
+    </record>
+
+    <!-- vistes form -->
+    <record model="ir.ui.view" id="empires_of_legends.player_form">
+      <field name="name">Empires Of Legends list</field>
+      <field name="model">empires_of_legends.player</field>
+      <field name="arch" type="xml">
+        <form>
+          <sheet>
+            <group>
+              <field name="name"/>
+              <field name="avatar" widget="image"/>
+              <field name="password"/>
+              <field name="villages"/>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+    
 
     <!-- actions opening views on models -->
 
     <record model="ir.actions.act_window" id="empires_of_legends.action_player_window">
       <field name="name">Empires Of Legends players window</field>
       <field name="res_model">empires_of_legends.player</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <record model="ir.actions.act_window" id="empires_of_legends.action_territory_window">
+      <field name="name">Empires Of Legends territories window</field>
+      <field name="res_model">empires_of_legends.territory</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <record model="ir.actions.act_window" id="empires_of_legends.action_village_window">
+      <field name="name">Empires Of Legends villages window</field>
+      <field name="res_model">empires_of_legends.village</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <record model="ir.actions.act_window" id="empires_of_legends.action_resource_site_window">
+      <field name="name">Empires Of Legends resource sites window</field>
+      <field name="res_model">empires_of_legends.resource_site</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <record model="ir.actions.act_window" id="empires_of_legends.action_building_window">
+      <field name="name">Empires Of Legends buildings window</field>
+      <field name="res_model">empires_of_legends.building</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <record model="ir.actions.act_window" id="empires_of_legends.action_building_type_window">
+      <field name="name">Empires Of Legends building types window</field>
+      <field name="res_model">empires_of_legends.building_type</field>
       <field name="view_mode">tree,form</field>
     </record>
 
@@ -52,7 +150,21 @@
 
     <menuitem name="Players" id="empires_of_legends.player_list" parent="empires_of_legends.game"
               action="empires_of_legends.action_player_window"/>
-    
+
+    <menuitem name="Territories" id="empires_of_legends.territory_list" parent="empires_of_legends.game"
+              action="empires_of_legends.action_territory_window"/>
+
+    <menuitem name="Villages" id="empires_of_legends.village_list" parent="empires_of_legends.game"
+              action="empires_of_legends.action_village_window"/>
+
+    <menuitem name="Resource Sites" id="empires_of_legends.resource_site_list" parent="empires_of_legends.game"
+              action="empires_of_legends.action_resource_site_window"/>
+
+    <menuitem name="Buildings" id="empires_of_legends.building_list" parent="empires_of_legends.game"
+              action="empires_of_legends.action_building_window"/>
+
+    <menuitem name="Building Types" id="empires_of_legends.building_type_list" parent="empires_of_legends.game"
+              action="empires_of_legends.action_building_type_window"/>
 
   </data>
 </odoo>
