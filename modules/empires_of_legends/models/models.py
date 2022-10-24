@@ -36,11 +36,11 @@ class village(models.Model):
     stone = fields.Integer()
     iron = fields.Integer()
     gold = fields.Integer()  # de pago
+    troops_qty = fields.Integer()
 
     player = fields.Many2one('empires_of_legends.player')
     territory = fields.Many2one('empires_of_legends.territory')
     buildings = fields.One2many('empires_of_legends.building', 'village')
-    troops_qty = fields.One2many('empires_of_legends.troop_qty', 'village')
     
 
 class resource_site(models.Model):
@@ -100,9 +100,3 @@ class building_type(models.Model):
     train_archery = fields.Integer()
     train_siege = fields.Integer()
     troops_qty = fields.Integer()
-
-class troop_qty(models.Model):
-    _name = 'empires_of_legends.troop_qty'
-    _description = 'Troop quantity'
-
-    village = fields.Many2one('empires_of_legends.village')
