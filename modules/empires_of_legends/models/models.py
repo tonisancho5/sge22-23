@@ -23,7 +23,6 @@ class territory(models.Model):
     resourceSites = fields.One2many('empires_of_legends.resource_site', 'territory')
     
 
-
 class village(models.Model):
     _name = 'empires_of_legends.village'
     _description = 'Villages'
@@ -36,11 +35,16 @@ class village(models.Model):
     stone = fields.Integer()
     iron = fields.Integer()
     gold = fields.Integer()  # de pago
+    infantry_qty = fields.Integer()
+    archery_qty = fields.Integer()
+    cavalryry_qty = fields.Integer()
+    siege_qty = fields.Integer()
     troops_qty = fields.Integer()
+    attack_power = fields.Integer()
 
     player = fields.Many2one('empires_of_legends.player')
-    territory = fields.Many2one('empires_of_legends.territory')
-    buildings = fields.One2many('empires_of_legends.building', 'village')
+    territory = fields.Many2one('empires_of_legends.territory',ondelete="cascade")
+    buildings = fields.One2many('empires_of_legends.building', 'village', ondelete="restrict")
     
 
 class resource_site(models.Model):
@@ -73,8 +77,6 @@ class building(models.Model):
     train_archery = fields.Integer(related='type.train_archery')
     train_siege = fields.Integer(related='type.train_siege')
 
-    troops_qty = fields.Integer(related='type.troops_qty')
-
     type = fields.Many2one('empires_of_legends.building_type')
     village = fields.Many2one('empires_of_legends.village')
 
@@ -99,4 +101,3 @@ class building_type(models.Model):
     train_cavalry = fields.Integer()
     train_archery = fields.Integer()
     train_siege = fields.Integer()
-    troops_qty = fields.Integer()

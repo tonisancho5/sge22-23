@@ -1,30 +1,28 @@
 <odoo>
     <data>
-<!--
-          <record id="object0" model="empires_of_legends.empires_of_legends">
-            <field name="name">Object 0</field>
+          <record id="empires_of_legends.player_demo" model="empires_of_legends.player">
+            <field name="name">player demo</field>
             <field name="value">0</field>
           </record>
 
-          <record id="object1" model="empires_of_legends.empires_of_legends">
-            <field name="name">Object 1</field>
+          <record id="empires_of_legends.territory_demo" model="empires_of_legends.territory">
+            <field name="name">Noxus</field>
             <field name="value">10</field>
           </record>
 
-          <record id="object2" model="empires_of_legends.empires_of_legends">
-            <field name="name">Object 2</field>
+          <record id="empires_of_legends.village_demo" model="empires_of_legends.village">
+            <field name="name">Noxus Prime</field>
             <field name="value">20</field>
           </record>
 
-          <record id="object3" model="empires_of_legends.empires_of_legends">
-            <field name="name">Object 3</field>
+          <record id="empires_of_legends.building_demo" model="empires_of_legends.building">
+            <field name="name">building</field>
             <field name="value">30</field>
           </record>
 
-          <record id="object4" model="empires_of_legends.empires_of_legends">
-            <field name="name">Object 4</field>
+          <record id="empires_of_legends.building_type_demo" model="empires_of_legends.building_type">
+            <field name="name">building_type</field>
             <field name="value">40</field>
           </record>
--->
     </data>
 </odoo>

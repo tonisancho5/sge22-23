@@ -155,3 +155,33 @@ ls
 git add .
 git commit -am "empires of legends"
 git push origin master
+odoo -d sge22 -u empires_of_legends
+odoo -d sge22 -u empires_of_legends
+odoo -d sge22 -u empires_of_legends
+odoo -d sge22 -u empires_of_legends
+odoo -d sge22 -u empires_of_legends
+odoo -d sge22 -u empires_of_legends
+odoo -d sge22 -u empires_of_legends
+odoo
+odoo -d sge22 -u empires_of_legends
+odoo -d sge22 -u empires_of_legends
+odoo -d sge22 -u empires_of_legends
+odoo -d sge22 -u empires_of_legends
+odoo -d sge22 -u empires_of_legends
+odoo -d sge22 -u empires_of_legends
+odoo -d sge22 -u empires_of_legends
+service odoo stop
+odoo -d sge22 -u empires_of_legends
+ps aux | grep odoo
+kill -9 11558
+ps aux | grep odoo
+odoo -d sge22 -u empires_of_legends
+odoo -d sge22 -u empires_of_legends
+odoo -d sge22 -u empires_of_legends
+odoo -d sge22 -u empires_of_legends
+odoo -d sge22 -u empires_of_legends
+git add .
+git commit -am "empires of legends"
+git push origin master
+odoo -d sge22 -u empires_of_legends
+odoo -d sge22 -u empires_of_legends
