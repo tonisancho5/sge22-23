@@ -22,7 +22,7 @@ class territory(models.Model):
     villages = fields.One2many('empires_of_legends.village', 'territory')
     resourceSites = fields.One2many('empires_of_legends.resource_site', 'territory')
     
-
+    
 class village(models.Model):
     _name = 'empires_of_legends.village'
     _description = 'Villages'
@@ -30,17 +30,17 @@ class village(models.Model):
     name = fields.Char(required=True)
     civilization = fields.Selection([('1', 'Bizantinos'), ('2', 'Britanos'), ('3', 'Celtas'),
                                      ('4', 'Chinos'), ('5', 'Francos'), ('6', 'Godos'), ('7', 'Japoneses')])
-    food = fields.Integer()
-    wood = fields.Integer()
-    stone = fields.Integer()
-    iron = fields.Integer()
-    gold = fields.Integer()  # de pago
-    infantry_qty = fields.Integer()
-    archery_qty = fields.Integer()
-    cavalryry_qty = fields.Integer()
-    siege_qty = fields.Integer()
-    troops_qty = fields.Integer()
-    attack_power = fields.Integer()
+    food = fields.Integer(string='Total comida')
+    wood = fields.Integer(string='Total')
+    stone = fields.Integer(string='Total')
+    iron = fields.Integer(string='Total')
+    gold = fields.Integer(string='Total')  # de pago
+    infantry_qty = fields.Integer(string='Total')
+    archery_qty = fields.Integer(string='Total')
+    cavalry_qty = fields.Integer(string='Total')
+    siege_qty = fields.Integer(string='Total')
+    troops_qty = fields.Integer(string='Total')
+    attack_power = fields.Integer(string='Total')
 
     player = fields.Many2one('empires_of_legends.player')
     territory = fields.Many2one('empires_of_legends.territory',ondelete="cascade")

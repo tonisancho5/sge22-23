@@ -66,7 +66,7 @@
 
     <!-- vistes form -->
     <record model="ir.ui.view" id="empires_of_legends.player_form">
-      <field name="name">Empires Of Legends list</field>
+      <field name="name">Player list</field>
       <field name="model">empires_of_legends.player</field>
       <field name="arch" type="xml">
         <form>
@@ -81,7 +81,121 @@
         </form>
       </field>
     </record>
+
+    <record model="ir.ui.view" id="empires_of_legends.village_form">
+      <field name="name">Village list</field>
+      <field name="model">empires_of_legends.village</field>
+      <field name="arch" type="xml">
+        <form>
+          <sheet>
+            <group>
+              <field name="name"/>
+              <field name="civilization"/>
+              <field name="food"/>
+              <field name="wood"/>
+              <field name="stone"/>
+              <field name="iron"/>
+              <field name="gold"/>
+              <field name="infantry_qty"/>
+              <field name="archery_qty"/>
+              <field name="cavalry_qty"/>
+              <field name="siege_qty"/>
+              <field name="troops_qty"/>
+              <field name="attack_power"/>
+              <field name="player"/>
+              <field name="territory"/>
+              <field name="buildings"/>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="empires_of_legends.territory_form">
+      <field name="name">Territory list</field>
+      <field name="model">empires_of_legends.territory</field>
+      <field name="arch" type="xml">
+        <form>
+          <sheet>
+            <group>
+              <field name="name"/>
+              <field name="villages"/>
+              <field name="resourceSites"/>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="empires_of_legends.resource_site_form">
+      <field name="name">Resource site list</field>
+      <field name="model">empires_of_legends.resource_site</field>
+      <field name="arch" type="xml">
+        <form>
+          <sheet>
+            <group>
+              <field name="name"/>
+              <field name="resourceType"/>
+              <field name="territory"/>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="empires_of_legends.building_form">
+      <field name="name">Building list</field>
+      <field name="model">empires_of_legends.building</field>
+      <field name="arch" type="xml">
+        <form>
+          <sheet>
+            <group>
+              <field name="name"/>
+              <field name="produce_food"/>
+              <field name="produce_wood"/>
+              <field name="produce_stone"/>
+              <field name="produce_iron"/>
+              <field name="consume_food"/>
+              <field name="consume_wood"/>
+              <field name="consume_stone"/>
+              <field name="consume_iron"/>
+              <field name="train_infantry"/>
+              <field name="train_cavalry"/>
+              <field name="train_archery"/>
+              <field name="train_siege"/>
+              <field name="type"/>
+              <field name="village"/>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
     
+    <record model="ir.ui.view" id="empires_of_legends.building_type_form">
+      <field name="name">Building type list</field>
+      <field name="model">empires_of_legends.building_type</field>
+      <field name="arch" type="xml">
+        <form>
+          <sheet>
+            <group>
+              <field name="name"/>
+              <field name="produce_food"/>
+              <field name="produce_wood"/>
+              <field name="produce_stone"/>
+              <field name="produce_iron"/>
+              <field name="consume_food"/>
+              <field name="consume_wood"/>
+              <field name="consume_stone"/>
+              <field name="consume_iron"/>
+              <field name="train_infantry"/>
+              <field name="train_cavalry"/>
+              <field name="train_archery"/>
+              <field name="train_siege"/>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
 
     <!-- actions opening views on models -->
 

@@ -1,30 +1,45 @@
 <odoo>
-    <data>
-<!--
-          <record id="object0" model="empires_of_legends.empires_of_legends">
-            <field name="name">Object 0</field>
-            <field name="value">0</field>
-          </record>
-
-          <record id="object1" model="empires_of_legends.empires_of_legends">
-            <field name="name">Object 1</field>
-            <field name="value">10</field>
-          </record>
-
-          <record id="object2" model="empires_of_legends.empires_of_legends">
-            <field name="name">Object 2</field>
-            <field name="value">20</field>
-          </record>
-
-          <record id="object3" model="empires_of_legends.empires_of_legends">
-            <field name="name">Object 3</field>
-            <field name="value">30</field>
-          </record>
-
-          <record id="object4" model="empires_of_legends.empires_of_legends">
-            <field name="name">Object 4</field>
-            <field name="value">40</field>
-          </record>
--->
-    </data>
+  <data>
+        <record id="empires_of_legends.building_type_farm_demo" model="empires_of_legends.building_type">
+          <field name="name">granja</field>
+          <field name="produce_food">10</field>
+        </record>
+        <record id="empires_of_legends.building_type_sawmill_demo" model="empires_of_legends.building_type">
+          <field name="name">aserradero</field>
+          <field name="produce_wood">10</field>
+        </record>
+        <record id="empires_of_legends.building_type_quarry_demo" model="empires_of_legends.building_type">
+          <field name="name">cantera</field>
+          <field name="produce_stone">10</field>
+        </record>
+        <record id="empires_of_legends.building_type_iron_mine_demo" model="empires_of_legends.building_type">
+          <field name="name">mina de hierro</field>
+          <field name="produce_iron">10</field>
+        </record>
+        <record id="empires_of_legends.building_type_barrak_demo" model="empires_of_legends.building_type">
+          <field name="name">cuartel</field>
+          <field name="consume_food">10</field>
+          <field name="consume_wood">5</field>
+          <field name="train_infantry">5</field>
+        </record>
+        <record id="empires_of_legends.building_type_barn_demo" model="empires_of_legends.building_type">
+          <field name="name">establo</field>
+          <field name="consume_food">10</field>
+          <field name="consume_stone">5</field>
+          <field name="train_cavalry">5</field>
+        </record>
+        <record id="empires_of_legends.building_type_archery_demo" model="empires_of_legends.building_type">
+          <field name="name">arqueria</field>
+          <field name="consume_food">10</field>
+          <field name="consume_iron">5</field>
+          <field name="train_archery">5</field>
+        </record>
+        <record id="empires_of_legends.building_type_workshop_demo" model="empires_of_legends.building_type">
+          <field name="name">taller</field>
+          <field name="consume_wood">5</field>
+          <field name="consume_stone">5</field>
+          <field name="consume_iron">5</field>
+          <field name="train_siege">5</field>
+        </record>
+  </data>
 </odoo>
