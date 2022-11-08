@@ -34,16 +34,6 @@
       </field>
     </record>
 
-    <record model="ir.ui.view" id="empires_of_legends.resource_site_tree">
-      <field name="name">Empires Of Legends resource sites list</field>
-      <field name="model">empires_of_legends.resource_site</field>
-      <field name="arch" type="xml">
-        <tree>
-          <field name="name"/>
-        </tree>
-      </field>
-    </record>
-
     <record model="ir.ui.view" id="empires_of_legends.building_tree">
       <field name="name">Empires Of Legends buildings list</field>
       <field name="model">empires_of_legends.building</field>
@@ -120,23 +110,6 @@
             <group>
               <field name="name"/>
               <field name="villages"/>
-              <field name="resourceSites"/>
-            </group>
-          </sheet>
-        </form>
-      </field>
-    </record>
-
-    <record model="ir.ui.view" id="empires_of_legends.resource_site_form">
-      <field name="name">Resource site list</field>
-      <field name="model">empires_of_legends.resource_site</field>
-      <field name="arch" type="xml">
-        <form>
-          <sheet>
-            <group>
-              <field name="name"/>
-              <field name="resourceType"/>
-              <field name="territory"/>
             </group>
           </sheet>
         </form>
@@ -197,6 +170,22 @@
       </field>
     </record>
 
+    <!-- vistes kanban -->
+
+    <record model="ir.ui.view" id="empires_of_legends.building_type_kanban">
+      <field name="name">Building type list kanban</field>
+      <field name="model">empires_of_legends.building_type</field>
+      <field name="arch" type="xml">
+        <kanban>
+          <templates>
+            <t t-name="kanban-box">
+              
+            </t>
+          </templates>
+        </kanban>
+      </field>
+    </record>
+
     <!-- actions opening views on models -->
 
     <record model="ir.actions.act_window" id="empires_of_legends.action_player_window">
@@ -217,12 +206,6 @@
       <field name="view_mode">tree,form</field>
     </record>
 
-    <record model="ir.actions.act_window" id="empires_of_legends.action_resource_site_window">
-      <field name="name">Empires Of Legends resource sites window</field>
-      <field name="res_model">empires_of_legends.resource_site</field>
-      <field name="view_mode">tree,form</field>
-    </record>
-
     <record model="ir.actions.act_window" id="empires_of_legends.action_building_window">
       <field name="name">Empires Of Legends buildings window</field>
       <field name="res_model">empires_of_legends.building</field>
@@ -234,6 +217,8 @@
       <field name="res_model">empires_of_legends.building_type</field>
       <field name="view_mode">tree,form</field>
     </record>
+
+    
 
 
     <!-- server action to the one above -->
@@ -270,9 +255,6 @@
 
     <menuitem name="Villages" id="empires_of_legends.village_list" parent="empires_of_legends.game"
               action="empires_of_legends.action_village_window"/>
-
-    <menuitem name="Resource Sites" id="empires_of_legends.resource_site_list" parent="empires_of_legends.game"
-              action="empires_of_legends.action_resource_site_window"/>
 
     <menuitem name="Buildings" id="empires_of_legends.building_list" parent="empires_of_legends.game"
               action="empires_of_legends.action_building_window"/>

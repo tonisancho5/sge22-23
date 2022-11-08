@@ -20,7 +20,6 @@ class territory(models.Model):
 
     name = fields.Char(required=True)
     villages = fields.One2many('empires_of_legends.village', 'territory')
-    resourceSites = fields.One2many('empires_of_legends.resource_site', 'territory')
     
     
 class village(models.Model):
@@ -31,30 +30,21 @@ class village(models.Model):
     civilization = fields.Selection([('1', 'Bizantinos'), ('2', 'Britanos'), ('3', 'Celtas'),
                                      ('4', 'Chinos'), ('5', 'Francos'), ('6', 'Godos'), ('7', 'Japoneses')])
     food = fields.Integer(string='Total comida')
-    wood = fields.Integer(string='Total')
-    stone = fields.Integer(string='Total')
-    iron = fields.Integer(string='Total')
-    gold = fields.Integer(string='Total')  # de pago
-    infantry_qty = fields.Integer(string='Total')
-    archery_qty = fields.Integer(string='Total')
-    cavalry_qty = fields.Integer(string='Total')
-    siege_qty = fields.Integer(string='Total')
-    troops_qty = fields.Integer(string='Total')
-    attack_power = fields.Integer(string='Total')
+    wood = fields.Integer(string='Total madera')
+    stone = fields.Integer(string='Total piedra')
+    iron = fields.Integer(string='Total hierro')
+    gold = fields.Integer(string='Total oro')  # de pago
+    infantry_qty = fields.Integer(string='Total caballeros')
+    archery_qty = fields.Integer(string='Total arqueros')
+    cavalry_qty = fields.Integer(string='Total jinetes')
+    siege_qty = fields.Integer(string='Total asedio')
+    troops_qty = fields.Integer(string='Total ejercito')
+    attack_power = fields.Integer(string='Total poder')
 
     player = fields.Many2one('empires_of_legends.player')
     territory = fields.Many2one('empires_of_legends.territory',ondelete="cascade")
     buildings = fields.One2many('empires_of_legends.building', 'village', ondelete="restrict")
     
-
-class resource_site(models.Model):
-    _name = 'empires_of_legends.resource_site'
-    _description = 'Resource Sites'
-
-    name = fields.Char(required=True, default="Resource Site")
-    resourceType = fields.Selection([('1', 'Food'), ('2', 'Wood'), ('3', 'Stone'), ('4', 'Iron')])
-    territory = fields.Many2one('empires_of_legends.territory')
-
 
 class building(models.Model):
     _name = 'empires_of_legends.building'
