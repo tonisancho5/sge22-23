@@ -241,3 +241,20 @@ git push origin master
 exit
 odoo -d sge22 -u empires_of_legends
 odoo -d sge22 -u empires_of_legends
+odoo -d sge22 -u empires_of_legends
+odoo -d sge22 -u empires_of_legends
+odoo -d sge22 -u empires_of_legends
+odoo -d sge22 -u empires_of_legends
+odoo -d sge22 -u empires_of_legends
+odoo -d sge22 -u empires_of_legends
+odoo -d sge22 -u empires_of_legends
+odoo -d sge22 -u empires_of_legends
+odoo
+odoo -d sge22 -u empires_of_legends
+odoo -d sge22 -u empires_of_legends
+odoo -d sge22 -u empires_of_legends
+odoo -d sge22 -u empires_of_legends
+odoo -d sge22 -u empires_of_legends
+git add .
+git commit -am "empires of legends"
+git push origin master

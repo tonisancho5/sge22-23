@@ -51,6 +51,7 @@ class building(models.Model):
     _description = 'Building'
 
     name = fields.Char()
+    avatar = fields.Image(related='type.avatar')
 
     produce_food = fields.Float(related='type.produce_food')
     produce_wood = fields.Float(related='type.produce_wood')
@@ -76,6 +77,7 @@ class building_type(models.Model):
     _description = 'Building Types'
 
     name = fields.Char()
+    avatar = fields.Image(max_width=200, max_height=200)
 
     produce_food = fields.Float()
     produce_wood = fields.Float()

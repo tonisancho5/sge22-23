@@ -123,21 +123,26 @@
         <form>
           <sheet>
             <group>
-              <field name="name"/>
-              <field name="produce_food"/>
-              <field name="produce_wood"/>
-              <field name="produce_stone"/>
-              <field name="produce_iron"/>
-              <field name="consume_food"/>
-              <field name="consume_wood"/>
-              <field name="consume_stone"/>
-              <field name="consume_iron"/>
-              <field name="train_infantry"/>
-              <field name="train_cavalry"/>
-              <field name="train_archery"/>
-              <field name="train_siege"/>
-              <field name="type"/>
-              <field name="village"/>
+              <group>
+                <field name="name"/>
+                <field name="avatar" widget="image"/>
+                <field name="type"/>
+                <field name="village"/>
+              </group>
+              <group>
+                <field name="produce_food" attrs="{'invisible': [('produce_food','=',0)]}"/>
+                <field name="produce_wood" attrs="{'invisible': [('produce_wood','=',0)]}"/>
+                <field name="produce_stone" attrs="{'invisible': [('produce_stone','=',0)]}"/>
+                <field name="produce_iron" attrs="{'invisible': [('produce_iron','=',0)]}"/>
+                <field name="consume_food" attrs="{'invisible': [('consume_food','=',0)]}"/>
+                <field name="consume_wood" attrs="{'invisible': [('consume_wood','=',0)]}"/>
+                <field name="consume_stone" attrs="{'invisible': [('consume_stone','=',0)]}"/>
+                <field name="consume_iron" attrs="{'invisible': [('consume_iron','=',0)]}"/>
+                <field name="train_infantry" attrs="{'invisible': [('train_infantry','=',0)]}"/>
+                <field name="train_cavalry" attrs="{'invisible': [('train_cavalry','=',0)]}"/>
+                <field name="train_archery" attrs="{'invisible': [('train_archery','=',0)]}"/>
+                <field name="train_siege" attrs="{'invisible': [('train_siege','=',0)]}"/>
+              </group>
             </group>
           </sheet>
         </form>
@@ -151,19 +156,24 @@
         <form>
           <sheet>
             <group>
-              <field name="name"/>
-              <field name="produce_food"/>
-              <field name="produce_wood"/>
-              <field name="produce_stone"/>
-              <field name="produce_iron"/>
-              <field name="consume_food"/>
-              <field name="consume_wood"/>
-              <field name="consume_stone"/>
-              <field name="consume_iron"/>
-              <field name="train_infantry"/>
-              <field name="train_cavalry"/>
-              <field name="train_archery"/>
-              <field name="train_siege"/>
+              <group>
+                <field name="name"/>
+                <field name="avatar" widget="image"/>
+              </group>
+              <group>
+                <field name="produce_food" attrs="{'invisible': [('produce_food','=',0)]}"/>
+                <field name="produce_wood" attrs="{'invisible': [('produce_wood','=',0)]}"/>
+                <field name="produce_stone" attrs="{'invisible': [('produce_stone','=',0)]}"/>
+                <field name="produce_iron" attrs="{'invisible': [('produce_iron','=',0)]}"/>
+                <field name="consume_food" attrs="{'invisible': [('consume_food','=',0)]}"/>
+                <field name="consume_wood" attrs="{'invisible': [('consume_wood','=',0)]}"/>
+                <field name="consume_stone" attrs="{'invisible': [('consume_stone','=',0)]}"/>
+                <field name="consume_iron" attrs="{'invisible': [('consume_iron','=',0)]}"/>
+                <field name="train_infantry" attrs="{'invisible': [('train_infantry','=',0)]}"/>
+                <field name="train_cavalry" attrs="{'invisible': [('train_cavalry','=',0)]}"/>
+                <field name="train_archery" attrs="{'invisible': [('train_archery','=',0)]}"/>
+                <field name="train_siege" attrs="{'invisible': [('train_siege','=',0)]}"/>
+              </group>
             </group>
           </sheet>
         </form>
