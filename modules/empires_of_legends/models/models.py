@@ -71,6 +71,30 @@ class building(models.Model):
     type = fields.Many2one('empires_of_legends.building_type')
     village = fields.Many2one('empires_of_legends.village')
 
+    def produce(self):
+        for building in self:
+            village = building.village
+            food = village.food + building.produce_food
+            wood = village.wood + building.produce_wood
+            stone = village.stone + building.produce_stone
+            iron = village.iron + building.produce_iron
+
+    def consume(self):
+        for building in self:
+            village = building.village
+            food = village.food - building.consume_food
+            wood = village.wood - building.consume_wood
+            stone = village.stone - building.consume_stone
+            iron = village.iron - building.consume_iron
+            
+    def train(self):
+        for building in self:
+            village = building.village
+            infantry_qty = village.infantry_qty + building.train_infantry
+            archery_qty = village.archery_qty + building.train_cavalry
+            cavalry_qty = village.cavalry_qty + building.train_archery
+            siege_qty = village.siege_qty + building.train_siege
+
 
 class building_type(models.Model):
     _name = 'empires_of_legends.building_type'
