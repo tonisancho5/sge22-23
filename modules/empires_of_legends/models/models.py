@@ -78,18 +78,15 @@ class building(models.Model):
             wood = village.wood + building.produce_wood
             stone = village.stone + building.produce_stone
             iron = village.iron + building.produce_iron
-
-    def consume(self):
+            
+            
+    def train(self):
         for building in self:
             village = building.village
             food = village.food - building.consume_food
             wood = village.wood - building.consume_wood
             stone = village.stone - building.consume_stone
             iron = village.iron - building.consume_iron
-            
-    def train(self):
-        for building in self:
-            village = building.village
             infantry_qty = village.infantry_qty + building.train_infantry
             archery_qty = village.archery_qty + building.train_cavalry
             cavalry_qty = village.cavalry_qty + building.train_archery
