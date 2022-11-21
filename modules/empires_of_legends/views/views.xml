@@ -181,15 +181,54 @@
     </record>
 
     <!-- vistes kanban -->
-
-    <record model="ir.ui.view" id="empires_of_legends.building_type_kanban">
-      <field name="name">Building type list kanban</field>
-      <field name="model">empires_of_legends.building_type</field>
+    <record model="ir.ui.view" id="empires_of_legends.building_kanban">
+      <field name="name">Building list kanban</field>
+      <field name="model">empires_of_legends.building</field>
       <field name="arch" type="xml">
         <kanban>
+          <field name="name"/>
+          <field name="id"/>
+          <field name="avatar"/>
+          <field name="produce_food"/>
+          <field name="produce_wood"/>
+          <field name="produce_stone"/>
+          <field name="produce_iron"/>
+          <field name="consume_food"/>
+          <field name="consume_wood"/>
+          <field name="consume_stone"/>
+          <field name="consume_iron"/>
+          <field name="train_infantry"/>
+          <field name="train_cavalry"/>
+          <field name="train_archery"/>
+          <field name="train_siege"/>
+
           <templates>
             <t t-name="kanban-box">
-              
+              <div t-attf-class="oe_kanban_card o_kanban_record_has_image_fill ">
+                <div class="o_kanban_image_fill_left o_kanban_image_full d-none d-md-block"
+                     t-attf-style="background-image:url('#{kanban_image('empires_of_legends.building',
+                     'avatar', record.id.value, placeholder)}')">
+                </div>
+
+                <div class="oe_kanban_details d-flex flex-column">
+                  <a type="open">
+                    <h4 class="o_kanban_record_title oe_partner_heading"><field name="name"/></h4></a>
+                  <ul>
+                    <li attrs="{'invisible': [('produce_food','=',0)]}">produce_food: <field name="produce_food"/></li>
+                    <li attrs="{'invisible': [('produce_wood','=',0)]}">produce_wood: <field name="produce_wood"/></li>
+                    <li attrs="{'invisible': [('produce_stone','=',0)]}">produce_stone: <field name="produce_stone"/></li>
+                    <li attrs="{'invisible': [('produce_iron','=',0)]}">produce_iron: <field name="produce_iron"/></li>
+                    <li attrs="{'invisible': [('consume_food','=',0)]}">consume_food: <field name="consume_food"/></li>
+                    <li attrs="{'invisible': [('consume_wood','=',0)]}">consume_wood: <field name="consume_wood"/></li>
+                    <li attrs="{'invisible': [('consume_stone','=',0)]}">consume_stone: <field name="consume_stone"/></li>
+                    <li attrs="{'invisible': [('consume_iron','=',0)]}">consume_iron: <field name="consume_iron"/></li>
+                    <li attrs="{'invisible': [('train_infantry','=',0)]}">train_infantry: <field name="train_infantry"/></li>
+                    <li attrs="{'invisible': [('train_cavalry','=',0)]}">train_cavalry: <field name="train_cavalry"/></li>
+                    <li attrs="{'invisible': [('train_archery','=',0)]}">train_archery: <field name="train_archery"/></li>
+                    <li attrs="{'invisible': [('train_siege','=',0)]}">train_siege: <field name="train_siege"/></li>
+                  </ul>
+                </div>
+              </div>
             </t>
           </templates>
         </kanban>
@@ -219,7 +258,7 @@
     <record model="ir.actions.act_window" id="empires_of_legends.action_building_window">
       <field name="name">Empires Of Legends buildings window</field>
       <field name="res_model">empires_of_legends.building</field>
-      <field name="view_mode">tree,form</field>
+      <field name="view_mode">kanban,tree,form</field>
     </record>
 
     <record model="ir.actions.act_window" id="empires_of_legends.action_building_type_window">
