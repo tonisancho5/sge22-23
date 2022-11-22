@@ -45,6 +45,7 @@ class village(models.Model):
     territory = fields.Many2one('empires_of_legends.territory',ondelete="cascade")
     buildings = fields.One2many('empires_of_legends.building', 'village', ondelete="restrict")
     
+    
 
 class building(models.Model):
     _name = 'empires_of_legends.building'
@@ -53,15 +54,15 @@ class building(models.Model):
     name = fields.Char()
     avatar = fields.Image(related='type.avatar')
 
-    produce_food = fields.Float(related='type.produce_food')
-    produce_wood = fields.Float(related='type.produce_wood')
-    produce_stone = fields.Float(related='type.produce_stone')
-    produce_iron = fields.Float(related='type.produce_iron')
+    produce_food = fields.Integer(related='type.produce_food')
+    produce_wood = fields.Integer(related='type.produce_wood')
+    produce_stone = fields.Integer(related='type.produce_stone')
+    produce_iron = fields.Integer(related='type.produce_iron')
 
-    consume_food = fields.Float(related='type.consume_food')
-    consume_wood = fields.Float(related='type.consume_wood')
-    consume_stone = fields.Float(related='type.consume_stone')
-    consume_iron = fields.Float(related='type.consume_iron')
+    consume_food = fields.Integer(related='type.consume_food')
+    consume_wood = fields.Integer(related='type.consume_wood')
+    consume_stone = fields.Integer(related='type.consume_stone')
+    consume_iron = fields.Integer(related='type.consume_iron')
 
     train_infantry = fields.Integer(related='type.train_infantry')
     train_cavalry = fields.Integer(related='type.train_cavalry')
@@ -71,15 +72,22 @@ class building(models.Model):
     type = fields.Many2one('empires_of_legends.building_type')
     village = fields.Many2one('empires_of_legends.village')
 
+    @api.model
     def produce(self):
-        for building in self:
+        for building in self: #en compte de fer un self hi ha que fer un search de ORM
             village = building.village
             food = village.food + building.produce_food
             wood = village.wood + building.produce_wood
             stone = village.stone + building.produce_stone
             iron = village.iron + building.produce_iron
             
-            
+            village.write({
+                "food":food,
+                "wood":wood,
+                "stone":stone,
+                "iron":iron
+            })
+     
     def train(self):
         for building in self:
             village = building.village
@@ -100,15 +108,15 @@ class building_type(models.Model):
     name = fields.Char()
     avatar = fields.Image(max_width=200, max_height=200)
 
-    produce_food = fields.Float()
-    produce_wood = fields.Float()
-    produce_stone = fields.Float()
-    produce_iron = fields.Float()
+    produce_food = fields.Integer()
+    produce_wood = fields.Integer()
+    produce_stone = fields.Integer()
+    produce_iron = fields.Integer()
 
-    consume_food = fields.Float()
-    consume_wood = fields.Float()
-    consume_stone = fields.Float()
-    consume_iron = fields.Float()
+    consume_food = fields.Integer()
+    consume_wood = fields.Integer()
+    consume_stone = fields.Integer()
+    consume_iron = fields.Integer()
 
     train_infantry = fields.Integer()
     train_cavalry = fields.Integer()

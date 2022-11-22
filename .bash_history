@@ -284,3 +284,21 @@ git push origin master
 git add .
 git commit -am "empires of legends"
 git push origin master
+odoo -d sge22 -u empires_of_legends
+ps aux | grep odoo
+odoo -d sge22 -u empires_of_legends
+odoo -d sge22 -u empires_of_legends
+odoo -d sge22 -u empires_of_legends
+odoo -d sge22 -u empires_of_legends
+odoo -d sge22 -u empires_of_legends
+odoo -d sge22 -u empires_of_legends
+odoo -d sge22 -u empires_of_legends
+odoo -d sge22 -u empires_of_legends
+odoo -d sge22 -u empires_of_legends
+odoo -d sge22 -u empires_of_legends
+odoo -d sge22 -u empires_of_legends
+odoo -d sge22 -u empires_of_legends
+odoo -d sge22 -u empires_of_legends
+git add .
+git commit -am "empires of legends"
+git push origin master
