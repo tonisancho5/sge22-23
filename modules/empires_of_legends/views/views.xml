@@ -181,6 +181,40 @@
     </record>
 
     <!-- vistes kanban -->
+    <record model="ir.ui.view" id="empires_of_legends.player_kanban">
+      <field name="name">Player list kanban</field>
+      <field name="model">empires_of_legends.player</field>
+      <field name="arch" type="xml">
+        <kanban>
+          <field name="name"/>
+          <field name="id"/>
+          <field name="password"/>
+          <field name="avatar"/>
+          <field name="villages"/>
+
+          <templates>
+            <t t-name="kanban-box">
+              <div t-attf-class="oe_kanban_card o_kanban_record_has_image_fill ">
+                <div class="o_kanban_image_fill_left o_kanban_image_full d-none d-md-block"
+                     t-attf-style="background-image:url('#{kanban_image('empires_of_legends.player',
+                     'avatar', record.id.value, placeholder)}')">
+                </div>
+
+                <div class="oe_kanban_details d-flex flex-column">
+                  <a type="open">
+                    <h4 class="o_kanban_record_title oe_partner_heading"><field name="name"/></h4></a>
+                  <ul>
+                    <li>name: <field name="name"/></li>
+                    <li>password: <field name="password"/></li>
+                  </ul>
+                </div>
+              </div>
+            </t>
+          </templates>
+        </kanban>
+      </field>
+    </record>
+
     <record model="ir.ui.view" id="empires_of_legends.building_kanban">
       <field name="name">Building list kanban</field>
       <field name="model">empires_of_legends.building</field>
@@ -240,7 +274,7 @@
     <record model="ir.actions.act_window" id="empires_of_legends.action_player_window">
       <field name="name">Empires Of Legends players window</field>
       <field name="res_model">empires_of_legends.player</field>
-      <field name="view_mode">tree,form</field>
+      <field name="view_mode">kanban,tree,form</field>
     </record>
 
     <record model="ir.actions.act_window" id="empires_of_legends.action_territory_window">

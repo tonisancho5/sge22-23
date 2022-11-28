@@ -51,7 +51,7 @@ class building(models.Model):
     _name = 'empires_of_legends.building'
     _description = 'Building'
 
-    name = fields.Char()
+    name = fields.Char(required=True)
     avatar = fields.Image(related='type.avatar')
 
     produce_food = fields.Integer(related='type.produce_food')
@@ -74,7 +74,7 @@ class building(models.Model):
 
     @api.model
     def produce(self):
-        for building in self: #en compte de fer un self hi ha que fer un search de ORM
+        for building in self.search([]): #en compte de fer un self hi ha que fer un search de ORM
             village = building.village
             food = village.food + building.produce_food
             wood = village.wood + building.produce_wood
@@ -87,7 +87,7 @@ class building(models.Model):
                 "stone":stone,
                 "iron":iron
             })
-     
+    
     def train(self):
         for building in self:
             village = building.village
