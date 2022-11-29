@@ -74,7 +74,7 @@ class building(models.Model):
 
     @api.model
     def produce(self):
-        for building in self.search([]): #en compte de fer un self hi ha que fer un search de ORM
+        for building in self.search([]):
             village = building.village
             food = village.food + building.produce_food
             wood = village.wood + building.produce_wood
@@ -122,3 +122,21 @@ class building_type(models.Model):
     train_cavalry = fields.Integer()
     train_archery = fields.Integer()
     train_siege = fields.Integer()
+
+class troop(models.Model):
+    _name = 'empires_of_legends.troop'
+    _description = 'Troops'
+
+    name = fields.Char()
+    image = fields.Image(max_width=200, max_height=200)
+    hp = fields.Float()
+    armor = fields.Float()
+    damage = fields.Float()
+    time = fields.Float(compute='_get_construction_time')
+    speed = fields.Float(compute='_get_construction_time')
+
+    def _get_construction_time(self):
+        for s in self:
+            s.time = (s.hp + 3 * s.damage + 2 * s.armor) / 13000
+            s.speed = 100000000 / (9 * s.hp + 15 * s.armor + 5 * s.damage)
+

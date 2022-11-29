@@ -319,3 +319,8 @@ odoo -d sge22 -u empires_of_legends
 odoo -d sge22 -u empires_of_legends
 odoo -d sge22 -u empires_of_legends
 odoo -d sge22 -u empires_of_legends
+odoo -d sge22 -u empires_of_legends
+git add .
+git commit -am "modificacio 28nov"
+git push origin master
+exit

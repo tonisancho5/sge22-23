@@ -79,21 +79,27 @@
         <form>
           <sheet>
             <group>
-              <field name="name"/>
-              <field name="civilization"/>
-              <field name="food"/>
-              <field name="wood"/>
-              <field name="stone"/>
-              <field name="iron"/>
-              <field name="gold"/>
-              <field name="infantry_qty"/>
-              <field name="archery_qty"/>
-              <field name="cavalry_qty"/>
-              <field name="siege_qty"/>
-              <field name="troops_qty"/>
-              <field name="attack_power"/>
-              <field name="player"/>
-              <field name="territory"/>
+              <group>
+                <field name="name"/>
+                <field name="civilization"/>
+                <field name="player"/>
+                <field name="territory"/>
+              </group>
+              <group>
+                <field name="food"/>
+                <field name="wood"/>
+                <field name="stone"/>
+                <field name="iron"/>
+                <field name="gold"/>
+              </group>
+              <group>
+                <field name="infantry_qty"/>
+                <field name="archery_qty"/>
+                <field name="cavalry_qty"/>
+                <field name="siege_qty"/>
+                <field name="troops_qty"/>
+                <field name="attack_power"/>
+              </group>
               <field name="buildings"/>
             </group>
           </sheet>
