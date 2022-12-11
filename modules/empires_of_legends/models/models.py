@@ -38,13 +38,21 @@ class village(models.Model):
     archery_qty = fields.Integer(string='Total arqueros')
     cavalry_qty = fields.Integer(string='Total jinetes')
     siege_qty = fields.Integer(string='Total asedio')
-    troops_qty = fields.Integer(string='Total ejercito')
-    attack_power = fields.Integer(string='Total poder')
+    troops_qty = fields.Integer(compute ='_get_troops_qty', string='Total ejercito', default=0)
 
     player = fields.Many2one('empires_of_legends.player')
     territory = fields.Many2one('empires_of_legends.territory',ondelete="cascade")
     buildings = fields.One2many('empires_of_legends.building', 'village', ondelete="restrict")
+    troops = fields.One2many('empires_of_legends.village_troop_rel', 'village')
+    available_troops = fields.Many2many('empires_of_legends.troop', compute="_get_available_troops")
     
+    def _get_troops_qty(self):
+        for village in self:
+            village.troops_qty = village.infantry_qty + village.archery_qty + village.cavalry_qty + village.siege_qty
+
+    def _get_available_troops(self):  # ORM
+        for c in self:
+            c.available_troops = self.env['empires_of_legends.troop'].search([])
     
 
 class building(models.Model):
@@ -129,14 +137,57 @@ class troop(models.Model):
 
     name = fields.Char()
     image = fields.Image(max_width=200, max_height=200)
-    hp = fields.Float()
-    armor = fields.Float()
-    damage = fields.Float()
-    time = fields.Float(compute='_get_construction_time')
-    speed = fields.Float(compute='_get_construction_time')
+    hp = fields.Float(default=1)
+    armor = fields.Float(default=1)
+    damage = fields.Float(default=1)
+    time = fields.Float(compute='_get_train_time')
+    speed = fields.Float(compute='_get_train_time')
 
-    def _get_construction_time(self):
+    def _get_train_time(self):
         for s in self:
             s.time = (s.hp + 3 * s.damage + 2 * s.armor) / 13000
             s.speed = 100000000 / (9 * s.hp + 15 * s.armor + 5 * s.damage)
 
+    def train(self):  # ORM
+        for s in self:
+            print('fabrica', self.env.context['ctx_village'])
+            village = self.env['empires_of_legends.village'].browse(self.env.context['ctx_village'])
+            village_troop_rel = village.troop.filtered(lambda c: c.troop_id.id == s.id)
+            if (len(village_troop_rel) == 0):  # no té encara cap nau d'aquest tipus
+                village_troop_rel = self.env['empires_of_legends.village_troop_rel'].create({
+                    "troop_id": s.id,
+                    "village_id": village.id,
+                    "qty": 0
+                })
+            self.env['empires_of_legends.village_troop_fabrication'].create({
+                "troop_id": village_troop_rel.id,
+                "time_remaining": s.time
+            })
+
+class village_troop_rel(models.Model):
+    _name = 'empires_of_legends.village_troop_rel'
+    _description = 'village_troop_rel'
+
+    name = fields.Char(related="troop_id.name")
+    troop_id = fields.Many2one('empires_of_legends.troop')
+    village = fields.Many2one('empires_of_legends.village')
+    qty = fields.Integer()
+    trains = fields.One2many('empires_of_legends.village_troop_train', 'troop_id')
+    trains_queue = fields.Integer(compute="_get_trains_queue")
+    trains_progress = fields.Float(compute="_get_trains_queue")
+
+    def _get_trains_queue(self):
+        for c in self:
+            c.trains_queue = len(c.trains)
+            c.trains_progress = 0
+            if (c.trains_queue >= 1):
+                c.trains_progress = c.trains[0].progress
+
+class village_troop_train(models.Model):
+    _name = 'empires_of_legends.village_troop_train'
+    _description = 'Troop train model'
+
+    name = fields.Char(related="troop_id.name")
+    troop_id = fields.Many2one('empires_of_legends.village_troop_rel')
+    progress = fields.Float()  # ORM CRON
+    time_remaining = fields.Float()

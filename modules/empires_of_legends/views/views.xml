@@ -1,15 +1,15 @@
 <odoo>
   <data>
     <!-- vistes tree -->
-    
+
     <record model="ir.ui.view" id="empires_of_legends.player_tree">
       <field name="name">Empires Of Legends player list</field>
       <field name="model">empires_of_legends.player</field>
       <field name="arch" type="xml">
         <tree>
-          <field name="name"/>
-          <field name="password"/>
-          <field name="villages"/>
+          <field name="name" />
+          <field name="password" />
+          <field name="villages" />
         </tree>
       </field>
     </record>
@@ -19,7 +19,13 @@
       <field name="model">empires_of_legends.village</field>
       <field name="arch" type="xml">
         <tree>
-          <field name="name"/>
+          <field name="name" />
+          <field name="food" />
+          <field name="wood" />
+          <field name="stone" />
+          <field name="iron" />
+          <field name="gold" />
+          <field name="troops_qty" />
         </tree>
       </field>
     </record>
@@ -29,7 +35,7 @@
       <field name="model">empires_of_legends.territory</field>
       <field name="arch" type="xml">
         <tree>
-          <field name="name"/>
+          <field name="name" />
         </tree>
       </field>
     </record>
@@ -39,7 +45,8 @@
       <field name="model">empires_of_legends.building</field>
       <field name="arch" type="xml">
         <tree>
-          <field name="name"/>
+          <field name="name" />
+          <field name="type" />
         </tree>
       </field>
     </record>
@@ -49,7 +56,7 @@
       <field name="model">empires_of_legends.building_type</field>
       <field name="arch" type="xml">
         <tree>
-          <field name="name"/>
+          <field name="name" />
         </tree>
       </field>
     </record>
@@ -62,10 +69,10 @@
         <form>
           <sheet>
             <group>
-              <field name="name"/>
-              <field name="avatar" widget="image"/>
-              <field name="password"/>
-              <field name="villages"/>
+              <field name="name" />
+              <field name="avatar" widget="image" />
+              <field name="password" />
+              <field name="villages" />
             </group>
           </sheet>
         </form>
@@ -80,27 +87,82 @@
           <sheet>
             <group>
               <group>
-                <field name="name"/>
-                <field name="civilization"/>
-                <field name="player"/>
-                <field name="territory"/>
+                <field name="name" />
+                <field name="civilization" />
+                <field name="player" />
+                <field name="territory" />
               </group>
               <group>
-                <field name="food"/>
-                <field name="wood"/>
-                <field name="stone"/>
-                <field name="iron"/>
-                <field name="gold"/>
+                <field name="food" />
+                <field name="wood" />
+                <field name="stone" />
+                <field name="iron" />
+                <field name="gold" />
               </group>
               <group>
-                <field name="infantry_qty"/>
-                <field name="archery_qty"/>
-                <field name="cavalry_qty"/>
-                <field name="siege_qty"/>
-                <field name="troops_qty"/>
-                <field name="attack_power"/>
+                <field name="infantry_qty" />
+                <field name="archery_qty" />
+                <field name="cavalry_qty" />
+                <field name="siege_qty" />
+                <field name="troops_qty" />
               </group>
-              <field name="buildings"/>
+              <field name="buildings" />
+              <group>
+                <field name="troops" mode="tree">
+                  <tree>
+                    <field name="name" />
+                    <field name="qty" />
+                    <field name="trains_queue" />
+                    <field name="trains_progress" widget="progressbar" />
+                  </tree>
+
+                </field>
+                <field name="available_troops" mode="kanban">
+                  <kanban>
+                    <field name="id" />
+                    <field name="image" />
+                    <field name="name" />
+                    <field name="armor" />
+                    <field name="damage" />
+
+                    <templates>
+                      <t t-name="kanban-box">
+                        <div t-attf-class="oe_kanban_card o_kanban_record_has_image_fill ">
+                          <div class="o_kanban_image_fill_left o_kanban_image_full d-none d-md-block"
+                            t-attf-style="background-image:url('#{kanban_image('empires_of_legends.troop',
+                     'image', record.id.value, placeholder)}')"></div>
+
+                          <div class="oe_kanban_details d-flex flex-column">
+                            <a type="open">
+                              <h4 class="o_kanban_record_title oe_partner_heading">
+                                <field name="name" />
+                              </h4>
+                            </a>
+                            <ul>
+                              <li>
+                                Armor:
+                                <field name="armor" />
+                              </li>
+                              <li>
+                                Damage:
+                                <field name="damage" />
+                              </li>
+                            </ul>
+                          </div>
+                          <div class="oe_kanban_details d-flex flex-column">
+                            <button name="train"
+                              type="object"
+                              string="Train"
+                              class="btn btn-primary"
+                              context="{'ctx_village':parent.id}"
+                            >Train</button>
+                          </div>
+                        </div>
+                      </t>
+                    </templates>
+                  </kanban>
+                </field>
+              </group>
             </group>
           </sheet>
         </form>
@@ -114,8 +176,8 @@
         <form>
           <sheet>
             <group>
-              <field name="name"/>
-              <field name="villages"/>
+              <field name="name" />
+              <field name="villages" />
             </group>
           </sheet>
         </form>
@@ -130,31 +192,31 @@
           <sheet>
             <group>
               <group>
-                <field name="name"/>
-                <field name="avatar" widget="image"/>
-                <field name="type"/>
-                <field name="village"/>
+                <field name="name" />
+                <field name="avatar" widget="image" />
+                <field name="type" />
+                <field name="village" />
               </group>
               <group>
-                <field name="produce_food" attrs="{'invisible': [('produce_food','=',0)]}"/>
-                <field name="produce_wood" attrs="{'invisible': [('produce_wood','=',0)]}"/>
-                <field name="produce_stone" attrs="{'invisible': [('produce_stone','=',0)]}"/>
-                <field name="produce_iron" attrs="{'invisible': [('produce_iron','=',0)]}"/>
-                <field name="consume_food" attrs="{'invisible': [('consume_food','=',0)]}"/>
-                <field name="consume_wood" attrs="{'invisible': [('consume_wood','=',0)]}"/>
-                <field name="consume_stone" attrs="{'invisible': [('consume_stone','=',0)]}"/>
-                <field name="consume_iron" attrs="{'invisible': [('consume_iron','=',0)]}"/>
-                <field name="train_infantry" attrs="{'invisible': [('train_infantry','=',0)]}"/>
-                <field name="train_cavalry" attrs="{'invisible': [('train_cavalry','=',0)]}"/>
-                <field name="train_archery" attrs="{'invisible': [('train_archery','=',0)]}"/>
-                <field name="train_siege" attrs="{'invisible': [('train_siege','=',0)]}"/>
+                <field name="produce_food" attrs="{'invisible': [('produce_food','=',0)]}" />
+                <field name="produce_wood" attrs="{'invisible': [('produce_wood','=',0)]}" />
+                <field name="produce_stone" attrs="{'invisible': [('produce_stone','=',0)]}" />
+                <field name="produce_iron" attrs="{'invisible': [('produce_iron','=',0)]}" />
+                <field name="consume_food" attrs="{'invisible': [('consume_food','=',0)]}" />
+                <field name="consume_wood" attrs="{'invisible': [('consume_wood','=',0)]}" />
+                <field name="consume_stone" attrs="{'invisible': [('consume_stone','=',0)]}" />
+                <field name="consume_iron" attrs="{'invisible': [('consume_iron','=',0)]}" />
+                <field name="train_infantry" attrs="{'invisible': [('train_infantry','=',0)]}" />
+                <field name="train_cavalry" attrs="{'invisible': [('train_cavalry','=',0)]}" />
+                <field name="train_archery" attrs="{'invisible': [('train_archery','=',0)]}" />
+                <field name="train_siege" attrs="{'invisible': [('train_siege','=',0)]}" />
               </group>
             </group>
           </sheet>
         </form>
       </field>
     </record>
-    
+
     <record model="ir.ui.view" id="empires_of_legends.building_type_form">
       <field name="name">Building type list</field>
       <field name="model">empires_of_legends.building_type</field>
@@ -163,22 +225,22 @@
           <sheet>
             <group>
               <group>
-                <field name="name"/>
-                <field name="avatar" widget="image"/>
+                <field name="name" />
+                <field name="avatar" widget="image" />
               </group>
               <group>
-                <field name="produce_food" attrs="{'invisible': [('produce_food','=',0)]}"/>
-                <field name="produce_wood" attrs="{'invisible': [('produce_wood','=',0)]}"/>
-                <field name="produce_stone" attrs="{'invisible': [('produce_stone','=',0)]}"/>
-                <field name="produce_iron" attrs="{'invisible': [('produce_iron','=',0)]}"/>
-                <field name="consume_food" attrs="{'invisible': [('consume_food','=',0)]}"/>
-                <field name="consume_wood" attrs="{'invisible': [('consume_wood','=',0)]}"/>
-                <field name="consume_stone" attrs="{'invisible': [('consume_stone','=',0)]}"/>
-                <field name="consume_iron" attrs="{'invisible': [('consume_iron','=',0)]}"/>
-                <field name="train_infantry" attrs="{'invisible': [('train_infantry','=',0)]}"/>
-                <field name="train_cavalry" attrs="{'invisible': [('train_cavalry','=',0)]}"/>
-                <field name="train_archery" attrs="{'invisible': [('train_archery','=',0)]}"/>
-                <field name="train_siege" attrs="{'invisible': [('train_siege','=',0)]}"/>
+                <field name="produce_food" attrs="{'invisible': [('produce_food','=',0)]}" />
+                <field name="produce_wood" attrs="{'invisible': [('produce_wood','=',0)]}" />
+                <field name="produce_stone" attrs="{'invisible': [('produce_stone','=',0)]}" />
+                <field name="produce_iron" attrs="{'invisible': [('produce_iron','=',0)]}" />
+                <field name="consume_food" attrs="{'invisible': [('consume_food','=',0)]}" />
+                <field name="consume_wood" attrs="{'invisible': [('consume_wood','=',0)]}" />
+                <field name="consume_stone" attrs="{'invisible': [('consume_stone','=',0)]}" />
+                <field name="consume_iron" attrs="{'invisible': [('consume_iron','=',0)]}" />
+                <field name="train_infantry" attrs="{'invisible': [('train_infantry','=',0)]}" />
+                <field name="train_cavalry" attrs="{'invisible': [('train_cavalry','=',0)]}" />
+                <field name="train_archery" attrs="{'invisible': [('train_archery','=',0)]}" />
+                <field name="train_siege" attrs="{'invisible': [('train_siege','=',0)]}" />
               </group>
             </group>
           </sheet>
@@ -192,26 +254,34 @@
       <field name="model">empires_of_legends.player</field>
       <field name="arch" type="xml">
         <kanban>
-          <field name="name"/>
-          <field name="id"/>
-          <field name="password"/>
-          <field name="avatar"/>
-          <field name="villages"/>
+          <field name="name" />
+          <field name="id" />
+          <field name="password" />
+          <field name="avatar" />
+          <field name="villages" />
 
           <templates>
             <t t-name="kanban-box">
               <div t-attf-class="oe_kanban_card o_kanban_record_has_image_fill ">
                 <div class="o_kanban_image_fill_left o_kanban_image_full d-none d-md-block"
-                     t-attf-style="background-image:url('#{kanban_image('empires_of_legends.player',
-                     'avatar', record.id.value, placeholder)}')">
-                </div>
+                  t-attf-style="background-image:url('#{kanban_image('empires_of_legends.player',
+                     'avatar', record.id.value, placeholder)}')"></div>
 
                 <div class="oe_kanban_details d-flex flex-column">
                   <a type="open">
-                    <h4 class="o_kanban_record_title oe_partner_heading"><field name="name"/></h4></a>
+                    <h4 class="o_kanban_record_title oe_partner_heading">
+                      <field name="name" />
+                    </h4>
+                  </a>
                   <ul>
-                    <li>name: <field name="name"/></li>
-                    <li>password: <field name="password"/></li>
+                    <li>
+                      name:
+                      <field name="name" />
+                    </li>
+                    <li>
+                      password:
+                      <field name="password" />
+                    </li>
                   </ul>
                 </div>
               </div>
@@ -226,52 +296,121 @@
       <field name="model">empires_of_legends.building</field>
       <field name="arch" type="xml">
         <kanban>
-          <field name="name"/>
-          <field name="id"/>
-          <field name="avatar"/>
-          <field name="produce_food"/>
-          <field name="produce_wood"/>
-          <field name="produce_stone"/>
-          <field name="produce_iron"/>
-          <field name="consume_food"/>
-          <field name="consume_wood"/>
-          <field name="consume_stone"/>
-          <field name="consume_iron"/>
-          <field name="train_infantry"/>
-          <field name="train_cavalry"/>
-          <field name="train_archery"/>
-          <field name="train_siege"/>
+          <field name="name" />
+          <field name="id" />
+          <field name="avatar" />
+          <field name="produce_food" />
+          <field name="produce_wood" />
+          <field name="produce_stone" />
+          <field name="produce_iron" />
+          <field name="consume_food" />
+          <field name="consume_wood" />
+          <field name="consume_stone" />
+          <field name="consume_iron" />
+          <field name="train_infantry" />
+          <field name="train_cavalry" />
+          <field name="train_archery" />
+          <field name="train_siege" />
 
           <templates>
             <t t-name="kanban-box">
               <div t-attf-class="oe_kanban_card o_kanban_record_has_image_fill ">
                 <div class="o_kanban_image_fill_left o_kanban_image_full d-none d-md-block"
-                     t-attf-style="background-image:url('#{kanban_image('empires_of_legends.building',
-                     'avatar', record.id.value, placeholder)}')">
-                </div>
+                  t-attf-style="background-image:url('#{kanban_image('empires_of_legends.building',
+                     'avatar', record.id.value, placeholder)}')"></div>
 
                 <div class="oe_kanban_details d-flex flex-column">
                   <a type="open">
-                    <h4 class="o_kanban_record_title oe_partner_heading"><field name="name"/></h4></a>
+                    <h4 class="o_kanban_record_title oe_partner_heading">
+                      <field name="name" />
+                    </h4>
+                  </a>
                   <ul>
-                    <li attrs="{'invisible': [('produce_food','=',0)]}">produce_food: <field name="produce_food"/></li>
-                    <li attrs="{'invisible': [('produce_wood','=',0)]}">produce_wood: <field name="produce_wood"/></li>
-                    <li attrs="{'invisible': [('produce_stone','=',0)]}">produce_stone: <field name="produce_stone"/></li>
-                    <li attrs="{'invisible': [('produce_iron','=',0)]}">produce_iron: <field name="produce_iron"/></li>
-                    <li attrs="{'invisible': [('consume_food','=',0)]}">consume_food: <field name="consume_food"/></li>
-                    <li attrs="{'invisible': [('consume_wood','=',0)]}">consume_wood: <field name="consume_wood"/></li>
-                    <li attrs="{'invisible': [('consume_stone','=',0)]}">consume_stone: <field name="consume_stone"/></li>
-                    <li attrs="{'invisible': [('consume_iron','=',0)]}">consume_iron: <field name="consume_iron"/></li>
-                    <li attrs="{'invisible': [('train_infantry','=',0)]}">train_infantry: <field name="train_infantry"/></li>
-                    <li attrs="{'invisible': [('train_cavalry','=',0)]}">train_cavalry: <field name="train_cavalry"/></li>
-                    <li attrs="{'invisible': [('train_archery','=',0)]}">train_archery: <field name="train_archery"/></li>
-                    <li attrs="{'invisible': [('train_siege','=',0)]}">train_siege: <field name="train_siege"/></li>
+                    <li attrs="{'invisible': [('produce_food','=',0)]}">
+                      produce_food:
+                      <field name="produce_food" />
+                    </li>
+                    <li attrs="{'invisible': [('produce_wood','=',0)]}">
+                      produce_wood:
+                      <field name="produce_wood" />
+                    </li>
+                    <li attrs="{'invisible': [('produce_stone','=',0)]}">
+                      produce_stone:
+                      <field name="produce_stone" />
+                    </li>
+                    <li attrs="{'invisible': [('produce_iron','=',0)]}">
+                      produce_iron:
+                      <field name="produce_iron" />
+                    </li>
+                    <li attrs="{'invisible': [('consume_food','=',0)]}">
+                      consume_food:
+                      <field name="consume_food" />
+                    </li>
+                    <li attrs="{'invisible': [('consume_wood','=',0)]}">
+                      consume_wood:
+                      <field name="consume_wood" />
+                    </li>
+                    <li attrs="{'invisible': [('consume_stone','=',0)]}">
+                      consume_stone:
+                      <field name="consume_stone" />
+                    </li>
+                    <li attrs="{'invisible': [('consume_iron','=',0)]}">
+                      consume_iron:
+                      <field name="consume_iron" />
+                    </li>
+                    <li attrs="{'invisible': [('train_infantry','=',0)]}">
+                      train_infantry:
+                      <field name="train_infantry" />
+                    </li>
+                    <li attrs="{'invisible': [('train_cavalry','=',0)]}">
+                      train_cavalry:
+                      <field name="train_cavalry" />
+                    </li>
+                    <li attrs="{'invisible': [('train_archery','=',0)]}">
+                      train_archery:
+                      <field name="train_archery" />
+                    </li>
+                    <li attrs="{'invisible': [('train_siege','=',0)]}">
+                      train_siege:
+                      <field name="train_siege" />
+                    </li>
                   </ul>
                 </div>
               </div>
             </t>
           </templates>
         </kanban>
+      </field>
+    </record>
+
+    <!-- vistes search -->
+
+    <record model="ir.ui.view" id="empires_of_legends.player_search">
+      <field name="name">Empires Of Legends player search</field>
+      <field name="model">empires_of_legends.player</field>
+      <field name="arch" type="xml">
+        <search>
+          <field name="name" />
+          <field name="villages" />
+        </search>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="empires_of_legends.village_search">
+      <field name="name">Empires Of Legends villages search</field>
+      <field name="model">empires_of_legends.village</field>
+      <field name="arch" type="xml">
+        <search>
+          <field name="name" />
+          <field name="food" />
+          <field name="wood" />
+          <field name="stone" />
+          <field name="iron" />
+          <field name="gold" />
+          <field name="troops_qty" />
+          <field name="territory" />
+          <filter name="group_by_territory" string="Group by territory" context="{'group_by': 'territory'}"></filter>
+        </search>
       </field>
     </record>
 
@@ -307,11 +446,9 @@
       <field name="view_mode">tree,form</field>
     </record>
 
-    
-
 
     <!-- server action to the one above -->
-<!--
+    <!--
     <record model="ir.actions.server" id="empires_of_legends.action_server">
       <field name="name">empiresOfLegends server</field>
       <field name="model_id" ref="model_empires_of_legends_empires_of_legends"/>
@@ -328,28 +465,28 @@
 
     <!-- Top menu item -->
 
-    <menuitem name="Empires Of Legends" id="empires_of_legends.menu_root"/>
+    <menuitem name="Empires Of Legends" id="empires_of_legends.menu_root" />
 
     <!-- menu categories -->
 
-    <menuitem name="Game" id="empires_of_legends.game" parent="empires_of_legends.menu_root"/>
+    <menuitem name="Game" id="empires_of_legends.game" parent="empires_of_legends.menu_root" />
 
     <!-- actions -->
 
     <menuitem name="Players" id="empires_of_legends.player_list" parent="empires_of_legends.game"
-              action="empires_of_legends.action_player_window"/>
+      action="empires_of_legends.action_player_window" />
 
     <menuitem name="Territories" id="empires_of_legends.territory_list" parent="empires_of_legends.game"
-              action="empires_of_legends.action_territory_window"/>
+      action="empires_of_legends.action_territory_window" />
 
     <menuitem name="Villages" id="empires_of_legends.village_list" parent="empires_of_legends.game"
-              action="empires_of_legends.action_village_window"/>
+      action="empires_of_legends.action_village_window" />
 
     <menuitem name="Buildings" id="empires_of_legends.building_list" parent="empires_of_legends.game"
-              action="empires_of_legends.action_building_window"/>
+      action="empires_of_legends.action_building_window" />
 
     <menuitem name="Building Types" id="empires_of_legends.building_type_list" parent="empires_of_legends.game"
-              action="empires_of_legends.action_building_type_window"/>
+      action="empires_of_legends.action_building_type_window" />
 
   </data>
 </odoo>
