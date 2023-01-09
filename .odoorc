@@ -1,6 +1,6 @@
 [options]
 addons_path = /var/lib/odoo/modules,/usr/lib/python3/dist-packages/odoo/addons
-admin_passwd = admin
+admin_passwd = $pbkdf2-sha512$25000$PEdozdlbS4kRwvg/57w3Rg$6enOrPGjOwPxVaCaSf818QR7azR.1EAoaro0TQv/VYIY0C4Q0QV9nzHt0FYy48bERbfwNs32tyUuF47mR12aTw
 csv_internal_sep = ,
 data_dir = /var/lib/odoo/.local/share/Odoo
 db_host = False

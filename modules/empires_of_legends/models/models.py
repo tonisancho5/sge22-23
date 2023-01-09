@@ -5,13 +5,16 @@ from odoo import models, fields, api
 
 
 class player(models.Model):
-    _name = 'empires_of_legends.player'
+    _name = 'res.partner'
     _description = 'Players'
+    _inherit = 'res.partner'
 
-    name = fields.Char(required=True, default="Player Name")
+    #name = fields.Char(required=True, default="Player Name")
+
     password = fields.Char()
     avatar = fields.Image(max_width=200, max_height=200)
     villages = fields.One2many('empires_of_legends.village', 'player')
+    is_player = fields.Boolean(default=False)
 
 
 class territory(models.Model):
@@ -39,8 +42,9 @@ class village(models.Model):
     cavalry_qty = fields.Integer(string='Total jinetes')
     siege_qty = fields.Integer(string='Total asedio')
     troops_qty = fields.Integer(compute ='_get_troops_qty', string='Total ejercito', default=0)
+    troop = fields.Char()
 
-    player = fields.Many2one('empires_of_legends.player')
+    player = fields.Many2one('res.partner', domain="[('is_player','=',True)]", ondelete="cascade")
     territory = fields.Many2one('empires_of_legends.territory',ondelete="cascade")
     buildings = fields.One2many('empires_of_legends.building', 'village', ondelete="restrict")
     troops = fields.One2many('empires_of_legends.village_troop_rel', 'village')
@@ -145,7 +149,7 @@ class troop(models.Model):
 
     def _get_train_time(self):
         for s in self:
-            s.time = (s.hp + 3 * s.damage + 2 * s.armor) / 13000
+            s.time = (s.hp + 3 * s.damage + 2 * s.armor)
             s.speed = 100000000 / (9 * s.hp + 15 * s.armor + 5 * s.damage)
 
     def train(self):  # ORM

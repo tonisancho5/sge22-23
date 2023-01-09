@@ -4,7 +4,7 @@
 
     <record model="ir.ui.view" id="empires_of_legends.player_tree">
       <field name="name">Empires Of Legends player list</field>
-      <field name="model">empires_of_legends.player</field>
+      <field name="model">res.partner</field>
       <field name="arch" type="xml">
         <tree>
           <field name="name" />
@@ -61,10 +61,44 @@
       </field>
     </record>
 
+    <record model="ir.ui.view" id="empires_of_legends.troop_tree">
+      <field name="name">Empires Of Legends troops list</field>
+      <field name="model">empires_of_legends.troop</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name" />
+          <field name="hp" />
+          <field name="armor" />
+          <field name="damage" />
+          <field name="time" />
+          <field name="speed" />
+        </tree>
+      </field>
+    </record>
+
     <!-- vistes form -->
+    <record model="ir.ui.view" id="empires_of_legends.player_partner_form">
+      <field name="name">Player list</field>
+      <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+      <field name="arch" type="xml">
+
+        <notebook colspan="4" position="inside">
+          <page string="Empires of Legends">
+            <group>
+              <field name="avatar" widget="image" />
+              <field name="password" />
+              <field name="is_player" />
+              <field name="villages" />
+            </group>
+          </page>
+        </notebook>
+      </field>
+    </record>
+
     <record model="ir.ui.view" id="empires_of_legends.player_form">
       <field name="name">Player list</field>
-      <field name="model">empires_of_legends.player</field>
+      <field name="model">res.partner</field>
       <field name="arch" type="xml">
         <form>
           <sheet>
@@ -72,6 +106,7 @@
               <field name="name" />
               <field name="avatar" widget="image" />
               <field name="password" />
+              <field name="is_player" />
               <field name="villages" />
             </group>
           </sheet>
@@ -248,10 +283,30 @@
       </field>
     </record>
 
+    <record model="ir.ui.view" id="empires_of_legends.troop_form">
+      <field name="name">Troops list</field>
+      <field name="model">empires_of_legends.troop</field>
+      <field name="arch" type="xml">
+        <form>
+          <sheet>
+            <group>
+              <field name="name" />
+              <field name="image" />
+              <field name="hp" />
+              <field name="armor" />
+              <field name="damage" />
+              <field name="time" />
+              <field name="speed" />
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
     <!-- vistes kanban -->
     <record model="ir.ui.view" id="empires_of_legends.player_kanban">
       <field name="name">Player list kanban</field>
-      <field name="model">empires_of_legends.player</field>
+      <field name="model">res.partner</field>
       <field name="arch" type="xml">
         <kanban>
           <field name="name" />
@@ -264,8 +319,8 @@
             <t t-name="kanban-box">
               <div t-attf-class="oe_kanban_card o_kanban_record_has_image_fill ">
                 <div class="o_kanban_image_fill_left o_kanban_image_full d-none d-md-block"
-                  t-attf-style="background-image:url('#{kanban_image('empires_of_legends.player',
-                     'avatar', record.id.value, placeholder)}')"></div>
+                  t-attf-style="background-image:url('#{kanban_image('res.partner',
+                     'image_1920', record.id.value, placeholder)}')"></div>
 
                 <div class="oe_kanban_details d-flex flex-column">
                   <a type="open">
@@ -387,9 +442,11 @@
 
     <record model="ir.ui.view" id="empires_of_legends.player_search">
       <field name="name">Empires Of Legends player search</field>
-      <field name="model">empires_of_legends.player</field>
+      <field name="model">res.partner</field>
+      <field name="priority" eval="17"/>
       <field name="arch" type="xml">
         <search>
+          <filter name="player_partner" string="Is Player" domain="[('is_player','=',True)]" />
           <field name="name" />
           <field name="villages" />
         </search>
@@ -418,8 +475,14 @@
 
     <record model="ir.actions.act_window" id="empires_of_legends.action_player_window">
       <field name="name">Empires Of Legends players window</field>
-      <field name="res_model">empires_of_legends.player</field>
+      <field name="res_model">res.partner</field>
       <field name="view_mode">kanban,tree,form</field>
+      <field name="domain"></field>
+      <field name="search_view_id" ref="empires_of_legends.player_search"></field>
+      <field name="context">{'default_is_player': True, 'search_default_player_partner': 1}</field>
+      <field name="view_ids" eval="[(5, 0, 0),
+            (0, 0, {'view_mode': 'tree', 'view_id': ref('empires_of_legends.player_tree')}),
+            (0, 0, {'view_mode': 'form', 'view_id': ref('empires_of_legends.player_form')}),]" />
     </record>
 
     <record model="ir.actions.act_window" id="empires_of_legends.action_territory_window">
@@ -443,6 +506,12 @@
     <record model="ir.actions.act_window" id="empires_of_legends.action_building_type_window">
       <field name="name">Empires Of Legends building types window</field>
       <field name="res_model">empires_of_legends.building_type</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <record model="ir.actions.act_window" id="empires_of_legends.action_troop_window">
+      <field name="name">Empires Of Legends troop window</field>
+      <field name="res_model">empires_of_legends.troop</field>
       <field name="view_mode">tree,form</field>
     </record>
 
@@ -487,6 +556,9 @@
 
     <menuitem name="Building Types" id="empires_of_legends.building_type_list" parent="empires_of_legends.game"
       action="empires_of_legends.action_building_type_window" />
+
+    <menuitem name="Troops" id="empires_of_legends.troop_list" parent="empires_of_legends.game"
+      action="empires_of_legends.action_troop_window" />
 
   </data>
 </odoo>

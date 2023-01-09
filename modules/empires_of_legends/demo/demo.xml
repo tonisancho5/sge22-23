@@ -1,8 +1,9 @@
 <odoo>
     <data>
-      <record id="empires_of_legends.player_demo1" model="empires_of_legends.player">
+      <record id="empires_of_legends.player_demo1" model="res.partner">
         <field name="name">Carlos</field>
         <field name="password">1234</field>
+        <field name="is_player">True</field>
         <field name="avatar">/9j/4AAQSkZJRgABAQEAkACQAAD/4SGiRXhpZgAASUkqAAgAAAAHABIBAwABAAAAAQAAABoBBQAB
           AAAAYgAAABsBBQABAAAAagAAACgBAwABAAAAAgAAADEBAgANAAAAcgAAADIBAgAUAAAAgAAAAGmH
           BAABAAAAlAAAAKYAAACQAAAAAQAAAJAAAAABAAAAR0lNUCAyLjEwLjMwAAAyMDIyOjExOjA3IDA5
@@ -360,9 +361,10 @@
           0NfQ7l/W/Wo/y+Xobj6c+l//ADfQJX0EP4fKf//Z</field>
       </record>
 
-      <record id="empires_of_legends.player_demo2" model="empires_of_legends.player">
+      <record id="empires_of_legends.player_demo2" model="res.partner">
         <field name="name">Moises</field>
         <field name="password">1234</field>
+        <field name="is_player">True</field>
         <field name="avatar">/9j/4AAQSkZJRgABAQEBLAEsAAD/4R6iRXhpZgAASUkqAAgAAAAIAA4BAgA6AAAAbgAAABIBAwAB
           AAAAAQAAABoBBQABAAAAqAAAABsBBQABAAAAsAAAACgBAwABAAAAAgAAADEBAgANAAAAuAAAADIB
           AgAUAAAAxgAAAGmHBAABAAAA2gAAADoBAABDUkVBVE9SOiBnZC1qcGVnIHYxLjAgKHVzaW5nIElK

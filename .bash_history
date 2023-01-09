@@ -324,3 +324,53 @@ git add .
 git commit -am "modificacio 28nov"
 git push origin master
 exit
+odoo -d sge22 -u empires_of_legends
+odoo -d sge22 -u empires_of_legends
+odoo -d sge22 -u empires_of_legends
+odoo -d sge22 -u empires_of_legends
+odoo -d sge22 -u empires_of_legends
+odoo -d sge22 -u empires_of_legends
+odoo -d sge22 -u empires_of_legends
+git add .
+git commit -am "modificacio 29nov"
+git push origin master
+odoo -d sge22 -u empires_of_legends
+odoo -d sge22 -u empires_of_legends
+exit
+sudo su
+exit
+su postgres
+su ubuntu
+odoo
+ls
+git pull origin master
+odoo -d sge22 -u empires_of_legends
+odoo -d sge22 -u empires_of_legends
+odoo -d sge22 -u empires_of_legends
+odoo -d sge22 -u empires_of_legends
+odoo -d sge22 -u empires_of_legends
+odoo -d sge22 -u empires_of_legends
+odoo -d sge22 -u empires_of_legends
+odoo -d sge22 -u empires_of_legends
+odoo -d sge22 -u empires_of_legends
+exit
+odoo -d sge22 -u empires_of_legends
+systemctl stop odoo
+odoo -d sge22 -u empires_of_legends
+odoo -d sge22 -u empires_of_legends
+odoo -d sge22 -u empires_of_legends
+odoo -d sge22 -u empires_of_legends
+odoo -d sge22 -u empires_of_legends
+odoo -d sge22 -u empires_of_legends
+systemctl stop odoo
+odoo -d sge22 -u empires_of_legends
+ps aux | grep odoo
+kill -9 1041
+odoo -d sge22 -u empires_of_legends
+odoo -d sge22 -u empires_of_legends
+odoo -d sge22 -u empires_of_legends
+odoo -d sge22 -u empires_of_legends
+odoo -d sge22 -u empires_of_legends
+odoo -d sge22 -u empires_of_legends
+odoo -d sge22 -u empires_of_legends
+odoo -d sge22 -u empires_of_legends
